@@ -1,6 +1,7 @@
 package com.joaquim.library
 
 import io.ktor.client.HttpClient
+import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
 import io.ktor.client.request.get
@@ -17,6 +18,10 @@ class Api(
     private var recentSearchEndpoint = Url("$baseUrl/tweets/search/recent")
 
     private val client = HttpClient {
+        defaultRequest {
+            header("Authorization", "Bearer $bearerToken")
+            header("Content-type", "application/json")
+        }
         install(JsonFeature) {
             serializer = KotlinxSerializer(
                 json = Json {
@@ -27,9 +32,6 @@ class Api(
     }
 
     suspend fun recentSearch(query: String): String {
-        return client.get("$recentSearchEndpoint?query=$query") {
-            header("Authorization", "Bearer $bearerToken")
-            header("Content-type", "application/json")
-        }
+        return client.get("$recentSearchEndpoint?query=$query")
     }
 }
