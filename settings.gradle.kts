@@ -15,3 +15,4 @@ pluginManagement {
 }
 rootProject.name = "Twitter4K"
 
+include(":lib", ":samples:android:twitter4ksample")
