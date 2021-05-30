@@ -1,5 +1,5 @@
-group = "com.joaquim"
-version = "1.0"
+group = "com.joaquimverges.twitter4k"
+version = "0.1"
 
 buildscript {
     repositories {
@@ -7,11 +7,11 @@ buildscript {
         jcenter()
         mavenCentral()
     }
+    val kotlinVersion = "1.5.0"
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4.32")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.4.32")
-        classpath("com.android.tools.build:gradle:4.1.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
+        classpath("com.android.tools.build:gradle:7.0.0-beta03")
     }
 }
 

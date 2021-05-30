@@ -2,7 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
     id("com.android.library")
-    id("kotlin-android-extensions")
+    id("kotlin-parcelize")
 }
 
 kotlin {
@@ -31,7 +31,6 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-android:1.5.0")
-                implementation("com.google.android.material:material:1.2.1")
             }
         }
         val androidTest by getting {
