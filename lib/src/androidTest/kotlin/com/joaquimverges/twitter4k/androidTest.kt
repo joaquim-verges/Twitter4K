@@ -1,4 +1,4 @@
-package com.joaquim.library
+package com.joaquimverges.twitter4k
 
 import org.junit.Assert.assertTrue
 import org.junit.Test

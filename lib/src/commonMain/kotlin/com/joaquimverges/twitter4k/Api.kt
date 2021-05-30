@@ -1,7 +1,7 @@
-package com.joaquim.library
+package com.joaquimverges.twitter4k
 
-import com.joaquim.library.models.Tweet
-import com.joaquim.library.models.TwitterResponse
+import com.joaquimverges.twitter4k.models.Tweet
+import com.joaquimverges.twitter4k.models.TwitterResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
@@ -9,7 +9,6 @@ import io.ktor.client.features.json.serializer.KotlinxSerializer
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.http.Url
-import io.ktor.util.NonceManager
 import kotlinx.serialization.json.Json
 
 class Api(

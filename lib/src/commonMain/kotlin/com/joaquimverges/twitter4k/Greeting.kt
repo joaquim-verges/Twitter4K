@@ -1,4 +1,4 @@
-package com.joaquim.library
+package com.joaquimverges.twitter4k
 
 
 class Greeting {

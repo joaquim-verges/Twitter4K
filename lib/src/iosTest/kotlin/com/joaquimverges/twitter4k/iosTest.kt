@@ -1,4 +1,4 @@
-package com.joaquim.library
+package com.joaquimverges.twitter4k
 
 import kotlin.test.Test
 import kotlin.test.assertTrue

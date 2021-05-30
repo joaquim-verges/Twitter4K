@@ -1,4 +1,4 @@
-package com.joaquim.library.models
+package com.joaquimverges.twitter4k.models
 
 import kotlinx.serialization.Serializable
 

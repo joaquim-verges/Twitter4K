@@ -1,11 +1,10 @@
 package com.joaquimverges.twitter4ksample
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.joaquim.library.Api
+import com.joaquimverges.twitter4k.Api
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
