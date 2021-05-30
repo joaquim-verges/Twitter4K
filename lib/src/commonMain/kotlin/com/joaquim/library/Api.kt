@@ -1,5 +1,7 @@
 package com.joaquim.library
 
+import com.joaquim.library.models.Tweet
+import com.joaquim.library.models.TwitterResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
@@ -31,7 +33,8 @@ class Api(
         }
     }
 
-    suspend fun recentSearch(query: String): String {
-        return client.get("$recentSearchEndpoint?query=$query")
+    suspend fun recentSearch(query: String): List<Tweet> {
+        val response: TwitterResponse<Tweet> = client.get("$recentSearchEndpoint?query=$query")
+        return response.data
     }
 }

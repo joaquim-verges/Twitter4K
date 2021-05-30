@@ -1,6 +1,7 @@
 package com.joaquimverges.twitter4ksample
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             val tweets = withContext(Dispatchers.IO) {
                 Api(resources.getString(R.string.api_key)).recentSearch("AndroidDev")
             }
-            textView.text = tweets
+            textView.text = tweets.map { it.text }.first()
         }
     }
 }
