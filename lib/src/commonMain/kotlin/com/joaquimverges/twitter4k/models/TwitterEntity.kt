@@ -16,5 +16,6 @@ data class Tweet(
 @Serializable
 data class User(
     override val id: String,
-    val text: String,
+    val username: String,
+    val name: String,
 ) : TwitterEntity()

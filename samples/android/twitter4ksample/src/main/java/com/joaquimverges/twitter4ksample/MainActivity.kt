@@ -9,16 +9,35 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var api: Api
+    private lateinit var textView: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val textView = findViewById<TextView>(R.id.text_view)
-        textView.text = "Loading..."
+        api = Api(resources.getString(R.string.api_key))
+        textView = findViewById(R.id.text_view)
+        lookupUsers()
+    }
+
+    fun searchTweets() {
         lifecycleScope.launchWhenStarted {
+            textView.text = "Loading..."
             val tweets = withContext(Dispatchers.IO) {
-                Api(resources.getString(R.string.api_key)).recentSearch("AndroidDev")
+                api.searchTweets("AndroidDev")
             }
             textView.text = tweets.map { it.text }.first()
+        }
+    }
+
+    fun lookupUsers() {
+        lifecycleScope.launchWhenStarted {
+            textView.text = "Loading..."
+            val tweets = withContext(Dispatchers.IO) {
+                api.lookupUsers(listOf("2244994945"))
+            }
+            textView.text = tweets.map { it.username }.first()
         }
     }
 }
