@@ -5,6 +5,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.joaquimverges.twitter4k.Api
+import com.joaquimverges.twitter4k.models.TweetFields
+import com.joaquimverges.twitter4k.models.TweetRequestParams
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -18,16 +20,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         api = Api(resources.getString(R.string.api_key))
         textView = findViewById(R.id.text_view)
-        lookupUsers()
+        searchTweets()
     }
 
     fun searchTweets() {
         lifecycleScope.launchWhenStarted {
             textView.text = "Loading..."
             val tweets = withContext(Dispatchers.IO) {
-                api.searchTweets("AndroidDev")
+                api.searchTweets("AndroidDev", TweetRequestParams(listOf(TweetFields.AUTHOR_ID, TweetFields.CREATED_AT)))
             }
-            textView.text = tweets.map { it.text }.first()
+            textView.text = tweets.map { it.authorId }.first()
         }
     }
 

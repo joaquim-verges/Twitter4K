@@ -1,6 +1,7 @@
 package com.joaquimverges.twitter4k
 
 import com.joaquimverges.twitter4k.models.Tweet
+import com.joaquimverges.twitter4k.models.TweetFields
 import com.joaquimverges.twitter4k.models.TwitterResponse
 import com.joaquimverges.twitter4k.models.User
 import io.ktor.client.HttpClient
@@ -36,9 +37,12 @@ class Api(
         }
     }
 
-    suspend fun searchTweets(query: String): List<Tweet> {
+
+
+    suspend fun searchTweets(query: String, request: TweetRequestParams): List<Tweet> {
         return client.get<TwitterResponse<Tweet>>(searchEndpoint) {
             parameter("query", query)
+            parameter("tweet.fields", request.fields.map { it.value }.joinToString(","))
         }.data
     }
 
